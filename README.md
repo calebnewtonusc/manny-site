@@ -1,4 +1,4 @@
-# Emmanuel Nwalozie — Personal Site
+# Emmanuel Nwalozie: Personal Site
 
 ![Next.js](https://img.shields.io/badge/Next.js_14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -6,18 +6,18 @@
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel)
 
-A cinematic personal portfolio site for Emmanuel Nwalozie — USC student, dual athlete (defensive end + sprinter), poet, and student government representative.
+A cinematic personal portfolio site for Emmanuel Nwalozie, USC student, dual athlete (defensive end + sprinter), poet, and student government representative.
 
 > Screenshot
 
 ## Features
 
-- **Cinematic Hero** — Full-screen video background with a pulsing warm amber orb, smooth clip-up title animations, and a subtle scroll indicator; graceful fallback for when no video is loaded
-- **Personality Ticker** — Horizontally scrolling marquee of character traits and interests, giving immediate personality context above the fold
-- **Photo Gallery** — Masonry-style grid with staggered Framer Motion reveal animations and a warm shimmer on hover; features a 2+1 desktop layout with full-width and portrait cards
-- **Beach Section with Parallax** — Full-width parallax scroll images flanking a 4-column handstand portrait grid; each photo uses a subtle 7% parallax offset on scroll
-- **Facts Section** — Typewriter-style staggered reveal of personal facts (athletics, campus, poetry, fashion, campus life) formatted as a clean label/value list
-- **Accessibility-First** — Skip-to-content link, `aria-label` on every section, `aria-hidden` on all decorative elements, and semantic HTML throughout
+- **Cinematic Hero:** Full-screen video background with a pulsing warm amber orb, smooth clip-up title animations, and a subtle scroll indicator. Graceful fallback for when no video is loaded.
+- **Personality Ticker:** Horizontally scrolling marquee of character traits and interests, giving immediate personality context above the fold
+- **Photo Gallery:** Masonry-style grid with staggered Framer Motion reveal animations and a warm shimmer on hover. Features a 2+1 desktop layout with full-width and portrait cards.
+- **Beach Section with Parallax:** Full-width parallax scroll images flanking a 4-column handstand portrait grid. Each photo uses a subtle 7% parallax offset on scroll.
+- **Facts Section:** Typewriter-style staggered reveal of personal facts (athletics, campus, poetry, fashion, campus life) formatted as a clean label/value list
+- **Accessibility-First:** Skip-to-content link, `aria-label` on every section, `aria-hidden` on all decorative elements, and semantic HTML throughout
 
 ## Tech Stack
 
@@ -65,5 +65,5 @@ public/
 
 ## Author
 
-**Caleb Newton** — [calebnewton.me](https://calebnewton.me)
+**Caleb Newton** ([calebnewton.me](https://calebnewton.me))
 Personal site built for Emmanuel Nwalozie · USC · 2026
