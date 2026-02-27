@@ -43,9 +43,9 @@ function TickerRow({
       <div
         className={`flex ${animClass} group-hover:[animation-play-state:paused] will-change-transform`}
       >
-        {doubled.map((item, i) => (
+        {doubled.map((item, idx) => (
           <span
-            key={`${item}-${i}`}
+            key={`${item}-${idx % items.length}-${idx < items.length ? 'a' : 'b'}`}
             className="whitespace-nowrap px-5 text-[11px] tracking-[0.28em] uppercase"
             style={{ color: 'rgba(255,255,255,0.26)' }}
           >

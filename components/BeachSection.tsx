@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { LazyMotion, m, domAnimation, useInView, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 
 /* Full-width image with subtle parallax scroll */
@@ -28,9 +28,9 @@ function ParallaxImage({
       ref={ref}
       className={`relative overflow-hidden rounded-2xl glass ${heightClass}`}
     >
-      <motion.div
+      <m.div
         className="absolute inset-0 scale-[1.16]"
-        style={{ y, willChange: 'transform' }}
+        style={{ y }}
       >
         <Image
           src={src}
@@ -40,7 +40,7 @@ function ParallaxImage({
           style={{ objectPosition }}
           sizes="(max-width: 768px) 100vw, 80vw"
         />
-      </motion.div>
+      </m.div>
       {/* Vignette inset */}
       <div
         className="absolute inset-0 pointer-events-none rounded-2xl"
@@ -65,7 +65,7 @@ function PortraitCard({
   const isInView = useInView(ref, { once: true, amount: 0.06 })
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className="relative h-72 md:h-[480px] overflow-hidden rounded-2xl group glass hover-glow"
       initial={{ opacity: 0, y: 48, scale: 0.94 }}
@@ -76,7 +76,6 @@ function PortraitCard({
         ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={{ scale: 1.016 }}
-      style={{ willChange: 'transform, opacity' }}
     >
       <Image
         src={src}
@@ -93,7 +92,7 @@ function PortraitCard({
         }}
         aria-hidden="true"
       />
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -109,45 +108,47 @@ export default function BeachSection() {
   ]
 
   return (
-    <section aria-label="Beach photos" className="px-6 md:px-12 py-24 max-w-6xl mx-auto">
+    <LazyMotion features={domAnimation}>
+      <section aria-label="Beach photos" className="px-6 md:px-12 py-24 max-w-6xl mx-auto">
 
-      <motion.div
-        ref={headerRef}
-        initial={{ opacity: 0, y: 22 }}
-        animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-10"
-      >
-        <p className="section-label">Open Skies</p>
-        <h2 className="mt-2 font-display font-bold text-white/90 text-3xl md:text-4xl tracking-tight">
-          Hands on sand.
-        </h2>
-      </motion.div>
+        <m.div
+          ref={headerRef}
+          initial={{ opacity: 0, y: 22 }}
+          animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10"
+        >
+          <p className="section-label">Open Skies</p>
+          <h2 className="mt-2 font-display font-bold text-white/90 text-3xl md:text-4xl tracking-tight">
+            Hands on sand.
+          </h2>
+        </m.div>
 
-      {/* Full-width opener — arms wide at beach */}
-      <div className="mb-4">
+        {/* Full-width opener — arms wide at beach */}
+        <div className="mb-4">
+          <ParallaxImage
+            src="/images/img-5946.jpeg"
+            alt="Emmanuel standing at the beach with arms spread wide, facing the ocean"
+            heightClass="h-[340px] md:h-[520px]"
+            objectPosition="center 40%"
+          />
+        </div>
+
+        {/* 4 portrait handstands in a grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-4">
+          {portraits.map((p, i) => (
+            <PortraitCard key={p.src} src={p.src} alt={p.alt} index={i} />
+          ))}
+        </div>
+
+        {/* Full-width closer — group sunset at pier */}
         <ParallaxImage
-          src="/images/img-5946.jpeg"
-          alt="Emmanuel standing at the beach with arms spread wide, facing the ocean"
+          src="/images/img-9584.jpeg"
+          alt="Emmanuel and three friends at the beach during golden hour sunset by the pier"
           heightClass="h-[340px] md:h-[520px]"
-          objectPosition="center 40%"
+          objectPosition="center 35%"
         />
-      </div>
-
-      {/* 4 portrait handstands in a grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-4">
-        {portraits.map((p, i) => (
-          <PortraitCard key={p.src} src={p.src} alt={p.alt} index={i} />
-        ))}
-      </div>
-
-      {/* Full-width closer — group sunset at pier */}
-      <ParallaxImage
-        src="/images/img-9584.jpeg"
-        alt="Emmanuel and three friends at the beach during golden hour sunset by the pier"
-        heightClass="h-[340px] md:h-[520px]"
-        objectPosition="center 35%"
-      />
-    </section>
+      </section>
+    </LazyMotion>
   )
 }

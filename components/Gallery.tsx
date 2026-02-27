@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { LazyMotion, m, domAnimation, useInView } from 'framer-motion'
 import Image from 'next/image'
 
 interface PhotoCardProps {
@@ -27,7 +27,7 @@ function PhotoCard({
   const isInView = useInView(ref, { once: true, amount: 0.06 })
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className={`relative overflow-hidden rounded-2xl group cursor-pointer hover-glow glass ${colClass} ${heightClass}`}
       initial={{ opacity: 0, y: 40, scale: 0.97 }}
@@ -38,7 +38,6 @@ function PhotoCard({
         ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={{ scale: 1.018 }}
-      style={{ willChange: 'transform, opacity' }}
     >
       <Image
         src={src}
@@ -59,7 +58,7 @@ function PhotoCard({
         }}
         aria-hidden="true"
       />
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -68,13 +67,14 @@ export default function Gallery() {
   const isHeaderInView = useInView(headerRef, { once: true })
 
   return (
-    <section
-      id="main"
-      aria-label="Photo gallery"
-      className="px-6 md:px-12 py-24 max-w-6xl mx-auto"
-    >
+    <LazyMotion features={domAnimation}>
+      <section
+        id="main"
+        aria-label="Photo gallery"
+        className="px-6 md:px-12 py-24 max-w-6xl mx-auto"
+      >
       {/* Header */}
-      <motion.div
+      <m.div
         ref={headerRef}
         initial={{ opacity: 0, y: 22 }}
         animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
@@ -85,7 +85,7 @@ export default function Gallery() {
         <h2 className="mt-2 font-display font-bold text-white/90 text-3xl md:text-4xl tracking-tight">
           Off the feed.
         </h2>
-      </motion.div>
+      </m.div>
 
       {/*
         Grid layout:
@@ -133,5 +133,6 @@ export default function Gallery() {
         />
       </div>
     </section>
+    </LazyMotion>
   )
 }
