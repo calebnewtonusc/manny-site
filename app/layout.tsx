@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import 'aos/dist/aos.css'
+import AOSInit from '@/components/AOSInit'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -57,6 +59,7 @@ export default function RootLayout({
         className="bg-[#080808] text-white antialiased overflow-x-hidden font-body"
         suppressHydrationWarning
       >
+        <AOSInit />
         {/* Skip navigation for accessibility */}
         <a
           href="#main"

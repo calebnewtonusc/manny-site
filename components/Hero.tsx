@@ -1,6 +1,8 @@
 'use client'
 
 import { LazyMotion, m, domAnimation } from 'framer-motion'
+import GranimBg from '@/components/GranimBg'
+import TypedHero from '@/components/TypedHero'
 
 export default function Hero() {
   return (
@@ -10,6 +12,9 @@ export default function Hero() {
         aria-label="Introduction"
         className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-[#080808]"
       >
+        {/* ── Granim gradient canvas ── */}
+        <GranimBg />
+
         {/* ── Hero video — drop hero.mp4 into /public/videos/ to activate ── */}
         <video
           autoPlay
@@ -107,14 +112,14 @@ export default function Hero() {
             </m.h1>
           </div>
 
-          {/* Tagline — distinct from eyebrow, shows personality depth */}
+          {/* Tagline — typed rotating phrases */}
           <m.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-8 text-[11px] tracking-[0.35em] text-white/40 uppercase"
+            className="mt-8 min-h-[1.4em]"
           >
-            Athlete.&nbsp;&nbsp;Poet.&nbsp;&nbsp;Trojan.
+            <TypedHero />
           </m.p>
         </div>
 
